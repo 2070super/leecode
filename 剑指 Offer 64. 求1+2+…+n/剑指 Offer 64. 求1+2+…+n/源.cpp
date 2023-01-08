@@ -1,7 +1,8 @@
 #include<iostream>
 using namespace std;
 class sum
-{
+{ 
+    friend class Solution;
 public:
     sum()
     {
@@ -21,6 +22,8 @@ int sum::_ret = 0;
 class Solution {
 public:
     int sumNums(int n) {
+        sum::_i = 1;
+        sum::_ret = 0;
         sum*p=new sum[n];
         return sum::getsum();
     }
