@@ -2,31 +2,22 @@
 #include<string>
 using namespace std;
 class Solution {
-public:
-    long reserve(long num) {
-        long sum = 0, pop;
-        while (num > 0) {
-            pop = num % 10;
-            num /= 10;
-            sum = sum * 10 + pop;
-        }
-        return sum;
-    }
+public: 
     int myAtoi(string s) {
         while (s[0] == ' ')
         {
             s.erase(0, 1);
         }
-        long ans = 0;
+        long long ans = 0;
         int flag = 0;
         bool sub = 0;
         if (s[0] == '-')
         {
             flag = 1;
-            sub = 1;
+            sub = true;
             s.erase(0, 1);
         }
-        if (s[0] == '+' && sub != 1)
+        if (s[0] == '+' && sub != true)
         {
             sub = 1;
             s.erase(0, 1);
@@ -37,12 +28,13 @@ public:
             {
                 break;
             }
-            if ((s[0] == '+' || s[0] == '-') && sub == 1)
+            if ((s[0] == '+' || s[0] == '-') && sub == true)
             {
                 break;
             }
             int a = s[0] - '0';
-            ans = ans + a * pow(10, s.size() - 1);
+            ans = ans*10 + a;
+            sub = 1;
             s.erase(0, 1);
             if (ans >= (pow(2, 31) - 1) && flag == 0)
             {
@@ -68,6 +60,7 @@ int main()
     cin >> s;
     Solution solution;
     int r = solution.myAtoi(s);
-  
+    cout << r << endl;
+    
 
 }
