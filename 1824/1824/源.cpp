@@ -50,11 +50,10 @@ public:
                 {
                     local = way1;
                 }
-<<<<<<< HEAD
                 i = max(k, j)-1;
-=======
+                i = max(k, j)-1;
                 i += max(k, j)-1;
->>>>>>> 9e61585dd7b24b42fde13bb9375a55490a8392c7
+                i = max(k, j)-1;
                 sidejump++;
             }
 
