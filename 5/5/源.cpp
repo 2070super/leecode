@@ -9,7 +9,7 @@ public:
 		int max = 0,maxleft=0,maxright=0;
 		for (int i = 0; i < s.size(); i++)
 		{	
-			int left , right ;
+			int left , right ,size=0;
 				left = i - 1;
 				right = i + 1;
 				if (i == 0)
@@ -27,26 +27,34 @@ public:
 						left--;
 						right++;
 					}
+					left++;
+					right--;
+					size = right - left;
 				}
 				 else if (s[i] == s[right])
 				{
 					left = i;
-					while (s[right] == s[left] && right != s.size()-1 && left != 0)
+					for (;s[right] == s[left] && right != s.size()-1 && left != 0;)
 					{
 						left--;
 						right++;
 					}
+					left++;
+					right--;
+					size = right - left;
 				}
 				 else if (s[left] == s[i])
 				{
 					right = i;
-					while (s[left] == s[right] && left != 0 && right != s.size()-1)
+					for (;s[left] == s[right] && left != 0 && right != s.size()-1;)
 					{
 						left--;
 						right++;
 					}
+					left++;
+					right--;
+					size = right - left;
 				}
-				int size = right - left;
 				if (max < size)
 					{
 						maxleft = left;
