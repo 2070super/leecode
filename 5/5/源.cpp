@@ -5,66 +5,38 @@ class Solution
 {
 public:
 	string longestPalindrome(string s) {
-		string ans = {};
-		int max = 0,maxleft=0,maxright=0;
-		for (int i = 0; i < s.size(); i++)
-		{	
-			int left , right ,size=0;
-				left = i - 1;
-				right = i + 1;
-				if (i == 0)
-				{
-					left = 0;
-				}
-				if(i== s.size()-1)
-				{
-					right = i;
-				}
-				if (s[left] == s[right])
-				{
-					for (;s[right] == s[left] && right != s.size() && left != 0;)
-					{
-						left--;
-						right++;
-					}
-					left++;
-					right--;
-					size = right - left;
-				}
-				 else if (s[i] == s[right])
-				{
-					left = i;
-					for (;s[right] == s[left] && right != s.size()-1 && left != 0;)
-					{
-						left--;
-						right++;
-					}
-					left++;
-					right--;
-					size = right - left;
-				}
-				 else if (s[left] == s[i])
-				{
-					right = i;
-					for (;s[left] == s[right] && left != 0 && right != s.size()-1;)
-					{
-						left--;
-						right++;
-					}
-					left++;
-					right--;
-					size = right - left;
-				}
-				if (max < size)
-					{
-						maxleft = left;
-						maxright = right;
-					}
-		}
-		for (int i = maxleft; i <= maxright; i++)
+		if (s.size() < 2)
 		{
-			ans.push_back(s[i]);
+			return s;
 		}
+		string ans = {};
+			for (int i = 0; i < s.size(); i++)
+			{
+				int size = 0;
+				int left = i, right = i;
+				while (left >= 0 && right < s.size() && s[left] == s[right])
+				{
+					left--;
+					right++;
+				}
+				if (right - left - 1 > ans.size()) 
+				{
+					ans = s.substr(left + 1, right - left - 1); 
+				}
+			
+		
+				 size = 0;
+				 left = i, right = i+1;
+					while (left >= 0 && right < s.size() && s[left ] == s[right])
+					{
+						left--;
+						right++;
+					}
+					if (right - left - 1 > ans.size()) 
+					{  
+						ans = s.substr(left + 1, right - left - 1); 
+					}
+			}
 		return ans;
 	}
 };
